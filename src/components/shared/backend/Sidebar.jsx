@@ -1,0 +1,63 @@
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
+import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import { Menu, Layout } from "antd";
+import { useSelector } from "react-redux";
+
+const { Sider } = Layout;
+
+const Sidebar = () => {
+  const profileInfo = useSelector((state) => state.account.info);
+  const [collapsed, setCollapsed] = useState(false);
+
+  let items = []
+
+  const getItem = (label, key, icon, children) => {
+    return { key, icon, children, label };
+  };
+  
+  if (profileInfo?.role === "admin") {
+    items = [
+      getItem("ข้อมูลติดต่อเรา", "1", <NavLink className="flex items-center" to="/backend/contact"><ContactsOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลสมาชิก", "2", <NavLink className="flex items-center" to="/backend/account"><AccountCircleOutlinedIcon /></NavLink>),
+      // getItem("ข้อมูลลูกค้า", "3", <NavLink className="flex items-center" to="/backend/customer"><BadgeOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลสินค้า", "4", <NavLink className="flex items-center" to="/backend/product"><LocalMallOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลการขาย", "5", <NavLink className="flex items-center" to="/backend/sale"><StorefrontIcon /></NavLink>),
+      getItem("แจ้งซ่อมสินค้า", "6", <NavLink className="flex items-center" to="/backend/repair"><HandymanOutlinedIcon /></NavLink>),
+      getItem("ภาพผลงาน", "7", <NavLink className="flex items-center" to="/backend/picwork"><InsertPhotoOutlinedIcon /></NavLink>),
+    ];
+  } else if (profileInfo?.role === "employee") {
+    items = [
+      // getItem("ข้อมูลลูกค้า", "1", <NavLink className="flex items-center" to="/backend/customer"><BadgeOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลลูกค้า", "1", <NavLink className="flex items-center" to="/backend/account"><AccountCircleOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลสินค้า", "2", <NavLink className="flex items-center" to="/backend/product"><LocalMallOutlinedIcon /></NavLink>),
+      getItem("ข้อมูลการขาย", "3", <NavLink className="flex items-center" to="/backend/sale"><StorefrontIcon /></NavLink>),
+      getItem("แจ้งซ่อมสินค้า", "4", <NavLink className="flex items-center" to="/backend/repair"><HandymanOutlinedIcon /></NavLink>),
+    ];
+  } else if (profileInfo?.role === "customer") {
+    items = [
+      getItem("ข้อมูลการขาย", "1", <NavLink className="flex items-center" to="/backend/sale"><StorefrontIcon /></NavLink>),
+      getItem("แจ้งซ่อมสินค้า", "2", <NavLink className="flex items-center" to="/backend/repair"><HandymanOutlinedIcon /></NavLink>),
+    ];
+  }
+  
+  
+  return (
+    <Sider theme="light" style={{ overflow: "auto", height: "100vh", position: "fixed", left: 0, top: 0, bottom: 0 }} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <div className="logo m-3 flex justify-center mb-7">
+        <NavLink to="/">
+          <img className="w-32" src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/logo.png`} alt="logo" />
+        </NavLink>
+      </div>
+      <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline" items={items} />
+    </Sider>
+  );
+};
+
+export default Sidebar;

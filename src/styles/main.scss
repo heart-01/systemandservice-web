@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap");
+
+.font-family-karla {
+  font-family: "Noto Sans Thai", sans-serif;
+}
+
+.ant-menu-item-selected {
+  color: black !important;
+  background-color: #ffffff !important;
+}
+
+.ant-menu-item-icon {
+  color: black !important;
+  background-color: #ffffff !important;
+}
