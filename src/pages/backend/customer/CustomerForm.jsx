@@ -44,7 +44,6 @@ const CustomerForm = (props) => {
       dispatch(createCustomer(values));
     } else {
       dispatch(patchCustomer(paramsId, values));
-      window.location.reload();
     }
   };
 

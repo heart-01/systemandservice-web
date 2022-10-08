@@ -98,6 +98,7 @@ export const patchCustomer = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(patchCustomerSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiCustomerFailed(error));

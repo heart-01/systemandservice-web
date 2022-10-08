@@ -110,6 +110,7 @@ export const patchRepair = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(patchRepairSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiRepairFailed(error));

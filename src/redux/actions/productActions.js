@@ -110,6 +110,7 @@ export const patchProduct = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(patchProductSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiProductFailed(error));

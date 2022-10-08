@@ -70,7 +70,6 @@ const Register = (props) => {
       dispatch(registerAccount(formData));
     } else {
       dispatch(patchAccount(accountId, formData));
-      window.location.reload();
     }
   };
 

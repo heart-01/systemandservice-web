@@ -122,7 +122,6 @@ const SaleForm = (props) => {
       dispatch(createSale(values));
     } else {
       dispatch(patchSale(paramsId, values));
-      window.location.reload();
     }
   };
 

@@ -53,7 +53,6 @@ const PicworkForm = (props) => {
       dispatch(createPicwork(formData));
     } else {
       dispatch(patchPicwork(paramsId, formData));
-      window.location.reload();
     }
   };
 

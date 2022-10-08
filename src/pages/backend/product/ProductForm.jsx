@@ -48,7 +48,6 @@ const ProductForm = (props) => {
       dispatch(createProduct(values));
     } else {
       dispatch(patchProduct(paramsId, values));
-      window.location.reload();
     }
   };
 

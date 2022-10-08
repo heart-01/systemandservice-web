@@ -119,6 +119,7 @@ export const patchPicwork = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(patchPicworkSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiPicworkFailed(error));

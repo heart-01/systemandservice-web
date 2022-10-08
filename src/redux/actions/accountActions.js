@@ -152,6 +152,7 @@ export const patchAccount = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(patchAccountSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiAccountFailed(error));

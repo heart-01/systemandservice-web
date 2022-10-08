@@ -92,7 +92,6 @@ const RepairForm = (props) => {
       dispatch(createRepair(formData));
     } else {
       dispatch(patchRepair(dataEdit.id, formData));
-      window.location.reload();
     }
   };
 
