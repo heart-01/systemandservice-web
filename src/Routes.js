@@ -13,6 +13,9 @@ import Service from "./pages/frontend/informations/Service";
 import Organization from "./pages/frontend/informations/Organization";
 import Board from "./pages/frontend/informations/Board";
 import Publicize from "./pages/frontend/publicize/Publicize";
+import News1 from "./pages/frontend/publicize/News1";
+import News2 from "./pages/frontend/publicize/News2";
+import News3 from "./pages/frontend/publicize/News3";
 import QuestionIndex from "./pages/frontend/question/index";
 import QuestionForm from "./pages/frontend/question/QuestionForm";
 import QuestionInfo from "./pages/frontend/question/QuestionInfo";
@@ -65,6 +68,9 @@ const RoutesPath = () => {
           <Route path="organization" element={<Organization title="โครงสร้างองค์กร" />} />
           <Route path="board" element={<Board title="คณะกรรมการบริษัท" />} />
           <Route path="publicize" element={<Publicize title="ประชาสัมพันธ์" />} />
+          <Route path="publicize/news-1" element={<News1 title="8 วิธีเลือกซื้อกล้องวงจรปิดเลือกกล้องอย่างไร" />} />
+          <Route path="publicize/news-2" element={<News2 title="5 อาการควรระวัง" />} />
+          <Route path="publicize/news-3" element={<News3 title="ประโยชน์ของ ระบบอินเทอร์เน็ต" />} />
         </Route>
         <Route path="/question">
           <Route index element={<QuestionIndex title="กระทู้ถาม-ตอบ" />} />

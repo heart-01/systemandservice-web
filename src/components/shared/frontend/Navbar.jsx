@@ -73,6 +73,7 @@ const Navbar = () => {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <NavLink
+                  end
                   to="/"
                   className={(navData) =>
                     navData.isActive
@@ -147,7 +148,7 @@ const Navbar = () => {
                             <NavLink to="/information/organization" className="flex items-start rounded-lg hover:bg-gray-50">
                               <div className="ml-4 mt-2">
                                 {" "}
-                                <p className="text-base font-medium text-gray-900">- โครงสร้างองกรณ์</p>{" "}
+                                <p className="text-base font-medium text-gray-900">- โครงสร้างองค์กร</p>{" "}
                               </div>
                             </NavLink>
                             <NavLink to="/information/board" className="flex items-start rounded-lg hover:bg-gray-50">
@@ -172,16 +173,18 @@ const Navbar = () => {
                 >
                   ข่าวประชาสัมพันธ์
                 </NavLink>
-                { token && (<NavLink
-                  to="/question"
-                  className={(navData) =>
-                    navData.isActive
-                      ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      : "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  }
-                >
-                  กระทู้ถาม-ตอบ
-                </NavLink>)}
+                {token && (
+                  <NavLink
+                    to="/question"
+                    className={(navData) =>
+                      navData.isActive
+                        ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        : "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    }
+                  >
+                    กระทู้ถาม-ตอบ
+                  </NavLink>
+                )}
                 <NavLink
                   to="/picwork"
                   className={(navData) =>
@@ -227,9 +230,10 @@ const Navbar = () => {
                   <HomeOutlined className="mr-1" /> Backend
                 </NavLink>
               )}
-              
+
               {token && (
-                <div style={{ cursor: "pointer" }}
+                <div
+                  style={{ cursor: "pointer" }}
                   onClick={handleOnClickLogout}
                   className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-400 hover:bg-red-500 hover:text-white"
                 >
@@ -255,6 +259,7 @@ const Navbar = () => {
           <div className={`${isOpen ? "sm:hidden block" : "sm:hidden hidden"}`} id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <NavLink
+                end
                 to="/"
                 className={(navData) =>
                   navData.isActive
@@ -349,16 +354,18 @@ const Navbar = () => {
               >
                 ข่าวประชาสัมพันธ์
               </NavLink>
-              {token && (<NavLink
-                to="/question"
-                className={(navData) =>
-                  navData.isActive
-                    ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    : "text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                }
-              >
-                กระทู้ถาม-ตอบ
-              </NavLink>)}
+              {token && (
+                <NavLink
+                  to="/question"
+                  className={(navData) =>
+                    navData.isActive
+                      ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                      : "text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  }
+                >
+                  กระทู้ถาม-ตอบ
+                </NavLink>
+              )}
               <NavLink
                 to="/picwork"
                 className={(navData) =>
@@ -382,7 +389,7 @@ const Navbar = () => {
 
               {!token && (
                 <NavLink to="/login" className="bg-blue-400 text-white hover:bg-blue-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                เข้าสู่ระบบ
+                  เข้าสู่ระบบ
                 </NavLink>
               )}
 
@@ -391,7 +398,7 @@ const Navbar = () => {
                   <HomeOutlined className="mr-1" /> หน้าจัดการข้อมูล
                 </NavLink>
               )}
-              
+
               {token && (
                 <div style={{ cursor: "pointer" }} onClick={handleOnClickLogout} className="bg-red-400 text-white hover:bg-red-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                   <LogoutOutlined className="mr-1" /> ออกจากระบบ
