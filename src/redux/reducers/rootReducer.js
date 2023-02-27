@@ -7,6 +7,7 @@ import customerReducer from './customerReducer'
 import saleReducer from './saleReducer'
 import picworkReducer from './picworkReducer'
 import repairReducer from './repairReducer'
+import publicizeReducer from './publicizeReducer'
 
 const createRootReducer = combineReducers ({
     question: questionReducer,
@@ -17,6 +18,7 @@ const createRootReducer = combineReducers ({
     sale: saleReducer,
     picwork: picworkReducer,
     repair: repairReducer,
+    publicize: publicizeReducer,
 })
 
 export default createRootReducer

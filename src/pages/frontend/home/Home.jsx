@@ -23,17 +23,17 @@ const Home = (props) => {
       <section className="text-gray-600 mb-12">
         <div className="container px-5 pt-20 mx-auto">
           <div className="flex justify-center align-center justify-items-center">
-            <Image preview={false} width={1020} src="assets/images/home/home-1.png" />
+            <Image preview={false} width={1920} src="assets/images/home/home-1.png" />
           </div>
           <div className="flex justify-center align-center justify-items-center py-5">
-            <Image preview={false} width={1020} src="assets/images/home/home-2.png" />
+            <Image preview={false} width={1920} src="assets/images/home/home-2.png" />
           </div>
 
           <div className="flex justify-center align-center justify-items-center">
-            <Image preview={false} width={1020} src="assets/images/home/home-3.png" />
+            <Image preview={false} width={1920} height={320} src="assets/images/home/home-3.png" />
           </div>
           <Carousel className="flex justify-center my-5" autoplay>
-            {_.times(11, (i) => (
+            {_.times(10, (i) => (
               <div className="px-60">
                 <Gallery
                   key={i}
@@ -51,10 +51,10 @@ const Home = (props) => {
           </Carousel>
 
           <div className="flex justify-center align-center justify-items-center">
-            <Image preview={false} width={1020} src="assets/images/home/home-4.png" />
+            <Image preview={false} width={1920} height={320} src="assets/images/home/home-4.png" />
           </div>
           <Carousel className="text-center my-5" autoplay>
-            {_.times(11, (i) => (
+            {_.times(5, (i) => (
               <div className="px-60">
                 <Gallery
                   key={i}

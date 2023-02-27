@@ -7,6 +7,7 @@ import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
 import { Menu, Layout } from "antd";
 import { useSelector } from "react-redux";
 
@@ -31,6 +32,7 @@ const Sidebar = () => {
       getItem("ข้อมูลการขาย", "5", <NavLink className="flex items-center" to="/backend/sale"><StorefrontIcon /></NavLink>),
       getItem("แจ้งซ่อมสินค้า", "6", <NavLink className="flex items-center" to="/backend/repair"><HandymanOutlinedIcon /></NavLink>),
       getItem("ภาพผลงาน", "7", <NavLink className="flex items-center" to="/backend/picwork"><InsertPhotoOutlinedIcon /></NavLink>),
+      getItem("ข่าวประชาสัมพันธ์", "8", <NavLink className="flex items-center" to="/backend/publicize"><NewspaperOutlinedIcon /></NavLink>),
     ];
   } else if (profileInfo?.role === "employee") {
     items = [

@@ -2,12 +2,9 @@ import { Image } from "antd";
 import React from "react";
 import TitleDocument from "../../../utils/TitleDocument";
 
-const newsHeader = `ปัจจุบัน กล้องวงจรปิด เข้ามามีบทบาทช่วยในการดูแลรักษาความปลอดภัยของทรัพย์สินมากยิ่งขึ้น ทั้งในอาคารและสถานที่ต่างๆ ไม่ว่าจะเกิดคดีความหรือเหตุการณ์อะไรขึ้นมา
-กล้องวงจรปิดถือเป็นหลักฐานชิ้นเด็ดที่จะช่วยยืนยันว่าเหตุการณ์ที่เกิดขึ้นเป็นไปอย่างไร และมีใครที่อยู่ในเหตุการณ์นั้นบ้าง ดังนั้น การเลือกกล้องวงจรปิดที่ดี
-และเหมาะสมกับการใช้งานย่อมนำมาซึ่งความปลอดภัยในชีวิตและทรัพย์สินมากขึ้น`;
+const newsHeader = `     ปัจจุบัน กล้องวงจรปิด เข้ามามีบทบาทช่วยในการดูแลรักษาความปลอดภัยของทรัพย์สินมากยิ่งขึ้น ทั้งในอาคารและสถานที่ต่างๆ ไม่ว่าจะเกิดคดีความหรือเหตุการณ์อะไรขึ้นมากล้องวงจรปิดถือเป็นหลักฐานชิ้นเด็ดที่จะช่วยยืนยันว่าเหตุการณ์ที่เกิดขึ้นเป็นไปอย่างไร และมีใครที่อยู่ในเหตุการณ์นั้นบ้าง ดังนั้น การเลือกกล้องวงจรปิดที่ดี และเหมาะสมกับการใช้งานย่อมนำมาซึ่งความปลอดภัยในชีวิตและทรัพย์สินมากขึ้น`;
 
-const news = `
-    1. คำนึงถึงวัตถุประสงค์ที่ต้องการใช้งาน
+const news = `    1. คำนึงถึงวัตถุประสงค์ที่ต้องการใช้งาน
     การเลือกกล้องวงจรปิดนั้น จะต้องเลือกตามวัตถุประสงค์ที่ต้องการนำมาใช้งาน เช่น ดูแลความปลอดภัยในตัวบ้าน โดยอาจจะใช้แบบกล้อง IP ที่สามารถใช้ตรวจสอบความเรียบร้อยได้ทันทีแม้ไม่อยู่บ้าน หรือไว้ใช้เป็นหลักฐานเมื่อยามเกิดเหตุการณ์ต่างๆ โดยสามารถเลือกได้ตามที่ต้องการ แต่ต้องคำนึงถึงความละเอียดของกล้องด้วย
 
     2. เลือกกล้องวงจรปิดที่มีความละเอียดสูง
@@ -33,10 +30,10 @@ const News1 = (props) => {
               style={{ backgroundImage: `url(${process.env.REACT_APP_PUBLIC_URL}/assets/images/publicize/publicize-1.jpeg)` }}
               title="Woman holding a mug"
             ></div>
-            <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal overflow-hidden">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">{newsHeader}</div>
-                <pre className="text-gray-700 text-base">{news}</pre>
+            <div className=" bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal overflow-hidden">
+              <div className="mb-8 ml-10">
+                <div className="text-gray-900 font-bold text-xl mb-2 whitespace-pre-wrap">{newsHeader}</div>
+                <div className="text-gray-700 text-base whitespace-pre-wrap">{news}</div>
               </div>
             </div>
           </div>

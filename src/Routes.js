@@ -50,6 +50,10 @@ import ManagePicworkIndex from "./pages/backend/picwork/index";
 import ManagePicworkCreate from "./pages/backend/picwork/PicworkForm";
 import ManagePicworkEdit from "./pages/backend/picwork/PicworkForm";
 import ManagePicworkView from "./pages/backend/picwork/ViewData";
+import ManagePublicizeIndex from "./pages/backend/publicize/index";
+import ManagePublicizeCreate from "./pages/backend/publicize/PublicizeForm";
+import ManagePublicizeEdit from "./pages/backend/publicize/PublicizeForm";
+import ManagePublicizeView from "./pages/backend/publicize/ViewData";
 
 // Error
 import PageNotFound from "./pages/error/PageNotFound";
@@ -122,6 +126,12 @@ const RoutesPath = () => {
             <Route path="add" element={<ManagePicworkCreate title="ข้อมูลอัลบั้มภาพผลงาน" />} />
             <Route path="edit/:paramsId" element={<ManagePicworkEdit title="ข้อมูลอัลบั้มภาพผลงาน" />} />
             <Route path="view/:paramsId" element={<ManagePicworkView title="ข้อมูลอัลบั้มภาพผลงาน" />} />
+          </Route>
+          <Route path="publicize">
+            <Route index element={<ManagePublicizeIndex title="ข้อมูลข่าวประชาสัมพันธ์" />} />
+            <Route path="add" element={<ManagePublicizeCreate title="ข้อมูลข่าวประชาสัมพันธ์" />} />
+            <Route path="edit/:paramsId" element={<ManagePublicizeEdit title="ข้อมูลข่าวประชาสัมพันธ์" />} />
+            <Route path="view/:paramsId" element={<ManagePublicizeView title="ข้อมูลข่าวประชาสัมพันธ์" />} />
           </Route>
         </Route>
       </Route>

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Index = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const picworkAll = useSelector((state) => state.picwork.all?.data);
+  const picworkAll = useSelector((state) => state.picwork?.all?.data);
 
   useEffect(() => {
     dispatch(loadPicworkAll());

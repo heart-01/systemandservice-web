@@ -88,7 +88,7 @@ const TableData = (props) => {
         data.length >= 1 ? (
           <>
             <div>
-              <Typography.Link onClick={() => handleOnClickAddRepair(record.key)}>ข้อมูลแจ้งซ่อม</Typography.Link>
+              <Typography.Link onClick={() => handleOnClickAddRepair(record.key)}>เพิ่มข้อมูลแจ้งซ่อม</Typography.Link>
             </div>
             <div>
               <Typography.Link onClick={() => handleOnClickViewRepair(record.key)}>รายละเอียดการแจ้งซ่อม</Typography.Link>
