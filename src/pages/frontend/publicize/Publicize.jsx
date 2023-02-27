@@ -1,11 +1,24 @@
+import { useEffect } from "react";
 import { Image } from "antd";
 import TitleDocument from "../../../utils/TitleDocument";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loadPublicizeAll } from "../../../redux/actions/publicizeActions.js";
 
 const Publicize = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const publicizeAll = useSelector((state) => state.publicize.all?.data);
+
+  useEffect(() => {
+    dispatch(loadPublicizeAll());
+  }, []);
+
   return (
     <>
       <TitleDocument title={props.title} />
+
+      {/* <div dangerouslySetInnerHTML={{ __html: props.htmlContent }} /> */}
 
       <section className="text-gray-600 mb-12">
         <div className="container px-5 pt-20 mx-auto">
@@ -16,54 +29,24 @@ const Publicize = (props) => {
               <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
                 <h2 className="text-2xl font-extrabold text-gray-900">บทความที่เกี่ยวข้อง</h2>
                 <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
-                  <NavLink to="/information/publicize/news-1">
-                    <div className="group relative">
-                      <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                        <img
-                          src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/publicize/publicize-1.jpeg`}
-                          alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                          className="w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <h3 className="mt-6 text-sm text-gray-500">
-                        <span className="absolute inset-0" />
-                        สาระน่ารู้
-                      </h3>
-                      <p className="text-base font-semibold text-gray-900">3 วิธีเลือกซื้อกล้องวงจรปิดเลือกกล้องอย่างไร ให้ใช้งานได้ดี เหมาะสมกับพื้นที่</p>
-                    </div>
-                  </NavLink>
-                  <NavLink to="/information/publicize/news-2">
-                    <div className="group relative">
-                      <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                        <img
-                          src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/publicize/publicize-2.jpeg`}
-                          alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
-                          className="w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <h3 className="mt-6 text-sm text-gray-500">
-                        <span className="absolute inset-0" />
-                        สาระน่ารู้
-                      </h3>
-                      <p className="text-base font-semibold text-gray-900">5 อาการควรระวัง บ่งบอกว่า คอมพิวเตอร์ของคุณ เริ่มเสื่อมสภาพ แนะนำให้รีบซ่อม</p>
-                    </div>
-                  </NavLink>
-                  <NavLink to="/information/publicize/news-3">
-                    <div className="group relative">
-                      <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                        <img
-                          src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/publicize/publicize-3.jpeg`}
-                          alt="Collection of four insulated travel bottles on wooden shelf."
-                          className="w-full h-full object-center object-cover"
-                        />
-                      </div>
-                      <h3 className="mt-6 text-sm text-gray-500">
-                        <span className="absolute inset-0" />
-                        สาระน่ารู้
-                      </h3>
-                      <p className="text-base font-semibold text-gray-900">ประโยชน์ของ ระบบอินเทอร์เน็ต และข้อควรระวังในการใช้งานที่ต้องทราบ</p>
-                    </div>
-                  </NavLink>
+                  {publicizeAll &&
+                    publicizeAll.map((item) => (
+                      <NavLink to={`/publicize/${item.id}`}>
+                        <div className="group relative">
+                          <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                            <img
+                              src={`${process.env.REACT_APP_URL_SERVER}/images/${item.image}`}
+                              alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                              className="w-full h-full object-center object-cover"
+                            />
+                          </div>
+                          <h3 className="mt-6 text-sm text-gray-500">
+                            <span className="absolute inset-0" />
+                          </h3>
+                          <p className="text-base font-semibold text-gray-900">{item.name}</p>
+                        </div>
+                      </NavLink>
+                    ))}
                 </div>
               </div>
             </div>

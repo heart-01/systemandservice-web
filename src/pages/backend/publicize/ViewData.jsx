@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPublicize, patchPublicize, loadPublicizeById, clearStatePublicize } from "../../../redux/actions/publicizeActions.js";
 import { useNavigate, useParams } from "react-router-dom";
 import TitleDocument from "../../../utils/TitleDocument";
-import { Button, Card, Form, Input, PageHeader, Upload, message, Image } from "antd";
+import { Card, Form, Input, PageHeader, Upload, message, Image } from "antd";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
-import { UploadOutlined } from "@ant-design/icons";
 import RichTextEditor from "@mantine/rte";
 
 const PublicizeForm = (props) => {
