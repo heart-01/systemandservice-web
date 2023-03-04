@@ -139,7 +139,7 @@ export const profileInfoAccount = () => {
         dispatch(loadAccountInfoSuccess(response.data));
       })
       .catch((error) => {
-        error && showMsg.unsuccess({ title: "เกิดข้อผิดพลาด!", text: "ติดต่อผู้ดูแลระบบ" });
+        // error && showMsg.unsuccess({ title: "เกิดข้อผิดพลาด!", text: "ติดต่อผู้ดูแลระบบ" });
         dispatch(callApiAccountFailed(error.response.status));
       });
   };

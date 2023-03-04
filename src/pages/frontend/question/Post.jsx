@@ -1,16 +1,32 @@
-import { patchQuestion } from "../../../redux/actions/questionActions";
-import { Avatar, List, Button } from "antd";
+import { deleteQuestion, patchQuestion } from "../../../redux/actions/questionActions";
+import { Avatar, List, Button, Modal, Space } from "antd";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import dayjs from "../../../utils/configuredDayJs"
-import CommentIcon from '@mui/icons-material/Comment';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useDispatch, useSelector } from "react-redux";
+import dayjs from "../../../utils/configuredDayJs";
+import CommentIcon from "@mui/icons-material/Comment";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { createContext } from "react";
 
 const Post = (props) => {
   const dispatch = useDispatch();
 
+  const [modal, contextHolder] = Modal.useModal();
+  const ReachableContext = createContext(null);
+  const profileInfo = useSelector((state) => state.account?.info);
+
   const handleOnClickViewPost = (questionId, views) => {
     dispatch(patchQuestion(questionId, { views }));
+  };
+
+  const handleOnClickDeletePost = (questionId) => {
+    return () => {
+      modal.confirm({
+        title: "ยืนยันการลบกระทู้",
+        onOk() {
+          dispatch(deleteQuestion(questionId));
+        },
+      });
+    };
   };
 
   return (
@@ -20,8 +36,12 @@ const Post = (props) => {
         <small className="text-sm text-gray-700">{dayjs().to(dayjs(props.data.created_at))}</small>
       </div>
       <div className="flex items-center justify-end">
-        <small className="text-sm text-gray-700 mr-2"><VisibilityIcon /> {props.data.views}</small>
-        <small className="text-sm text-gray-700"><CommentIcon /> {props.data.count_comment}</small>
+        <small className="text-sm text-gray-700 mr-2">
+          <VisibilityIcon /> {props.data.views}
+        </small>
+        <small className="text-sm text-gray-700">
+          <CommentIcon /> {props.data.count_comment}
+        </small>
       </div>
       <List.Item>
         <List.Item.Meta
@@ -33,6 +53,17 @@ const Post = (props) => {
           <NavLink onClick={() => handleOnClickViewPost(props.data.id, +props.data.views + 1)} to={`${props.data.id}`}>
             <Button type="dashed">ความคิดเห็น</Button>
           </NavLink>
+
+          {profileInfo?.role === "admin" && (
+            <ReachableContext.Provider>
+              <Space>
+                <Button type="primary" danger onClick={handleOnClickDeletePost(props.data.id)}>
+                  ลบ
+                </Button>
+              </Space>
+              {contextHolder}
+            </ReachableContext.Provider>
+          )}
         </div>
       </List.Item>
     </List>

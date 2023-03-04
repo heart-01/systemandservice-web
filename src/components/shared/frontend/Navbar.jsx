@@ -1,24 +1,28 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import useOutsideClick from "../useOutsideClick";
 import { HomeOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { clearStateAccount } from "../../../redux/actions/accountActions.js";
+import { clearStateAccount, profileInfoAccount } from "../../../redux/actions/accountActions.js";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const token = localStorage.getItem("token");
-  const profileInfo = useSelector((state) => state.account.info);
+  const profileInfo = useSelector((state) => state.account?.info);
 
   const ref = useRef(null);
 
   useOutsideClick(ref, () => {
     setIsActive(false);
   });
+
+  useEffect(() => {
+    dispatch(profileInfoAccount());
+  }, [dispatch]);
 
   const handleOnClickLogout = () => {
     dispatch(clearStateAccount());

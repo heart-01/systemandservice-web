@@ -107,6 +107,7 @@ export const createQuestion = (data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(createQuestionSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiQuestionFailed(error));
@@ -120,6 +121,20 @@ export const patchQuestion = (id, data) => {
       .patchQuestion(id, data)
       .then((response) => {
         dispatch(patchQuestionSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(callApiQuestionFailed(error));
+      });
+  };
+};
+
+export const deleteQuestion = (id) => {
+  return (dispatch) => {
+    api
+      .deleteQuestion(id)
+      .then((response) => {
+        dispatch(patchQuestionSuccess(response.data));
+        window.location.reload();
       })
       .catch((error) => {
         dispatch(callApiQuestionFailed(error));
