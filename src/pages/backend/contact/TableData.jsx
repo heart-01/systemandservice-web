@@ -92,7 +92,7 @@ const TableData = (props) => {
         data.length >= 1 ? (
           <div>
             <Popconfirm title="Sure to delete?" onConfirm={() => handleOnClickDelete(record.key)}>
-              <a>Delete</a>
+              <a className="text-red-500" >Delete</a>
             </Popconfirm>
           </div>
         ) : null,
