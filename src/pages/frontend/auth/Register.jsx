@@ -137,16 +137,30 @@ const Register = (props) => {
                   <Input />
                 </Form.Item>
 
-                <Form.Item label="อีเมล์" name="email" rules={[{ required: true, message: "กรอกอีเมล์" }]}>
+                <Form.Item
+                  label="อีเมล์"
+                  name="email"
+                  rules={[
+                    { type: "email", message: "รูปแบบอีเมล์ไม่ถูกต้อง เช่น user@email.com" },
+                    { required: true, message: "กรอกอีเมล์" },
+                  ]}
+                >
                   <Input />
                 </Form.Item>
 
-                <Form.Item label="เบอร์โทร" name="tel" rules={[{ required: true, message: "กรอกเบอร์โทร" }]}>
+                <Form.Item
+                  label="เบอร์โทร"
+                  name="tel"
+                  rules={[
+                    { pattern: /^(\+)?([0-9]){10,10}$/, message: "รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง" },
+                    { required: true, message: "กรอกเบอร์โทรศัพท์" },
+                  ]}
+                >
                   <Input />
                 </Form.Item>
 
                 <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{ required: true, message: "กรอกชื่อผู้ใช้งาน" }]}>
-                  <Input />
+                  {accountEdit ? <Input disabled /> : <Input />}
                 </Form.Item>
 
                 {!accountEdit && (
@@ -179,22 +193,44 @@ const Register = (props) => {
                   </Form.Item>
                 </Row> */}
 
-                {(role === 'employee' || role === 'admin') && (<Form.Item label="วันเริ่มงาน" name="start_date" rules={[{ required: true, message: "เลือกวันเริ่มงาน" }]} >
-                  <DatePicker />
-                </Form.Item>)}
-
-                {profileInfo?.role === 'admin' && (
-                  <Form.Item label="สิทธิบัญชี" name="role" rules={[{ required: true, message: "เลือกประเภทของบัญชี" }]}>
-                    <Select showSearch placeholder="กรุณาเลือกประเภทของบัญชี" optionFilterProp="children" filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}>
-                      <Option value="user">สมาชิก</Option>
-                      <Option value="admin">แอดมิน</Option>
-                      <Option value="employee">พนักงาน</Option>
-                      <Option value="customer">ลูกค้า</Option>
-                    </Select>
+                {(role === "employee" || role === "admin") && (
+                  <Form.Item label="วันเริ่มงาน" name="start_date" rules={[{ required: true, message: "เลือกวันเริ่มงาน" }]}>
+                    <DatePicker />
                   </Form.Item>
                 )}
 
-                {profileInfo?.role === 'employee' && (
+                {profileInfo?.role === "admin" && (
+                  <Form.Item label="สิทธิบัญชี" name="role" rules={[{ required: true, message: "เลือกประเภทของบัญชี" }]}>
+                    {accountEdit ? (
+                      <Select
+                        disabled
+                        showSearch
+                        placeholder="กรุณาเลือกประเภทของบัญชี"
+                        optionFilterProp="children"
+                        filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
+                      >
+                        <Option value="user">สมาชิก</Option>
+                        <Option value="admin">แอดมิน</Option>
+                        <Option value="employee">พนักงาน</Option>
+                        <Option value="customer">ลูกค้า</Option>
+                      </Select>
+                    ) : (
+                      <Select
+                        showSearch
+                        placeholder="กรุณาเลือกประเภทของบัญชี"
+                        optionFilterProp="children"
+                        filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
+                      >
+                        <Option value="user">สมาชิก</Option>
+                        <Option value="admin">แอดมิน</Option>
+                        <Option value="employee">พนักงาน</Option>
+                        <Option value="customer">ลูกค้า</Option>
+                      </Select>
+                    )}
+                  </Form.Item>
+                )}
+
+                {profileInfo?.role === "employee" && (
                   <Form.Item label="สิทธิบัญชี" name="role" rules={[{ required: true, message: "เลือกประเภทของบัญชี" }]}>
                     <Select showSearch placeholder="กรุณาเลือกประเภทของบัญชี" optionFilterProp="children" filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}>
                       <Option value="user">สมาชิก</Option>

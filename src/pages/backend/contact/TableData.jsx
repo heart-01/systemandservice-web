@@ -1,9 +1,12 @@
-import { Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import dayjs from "../../../utils/configuredDayJs";
 import { useSearchColumnTable } from "../../../hooks/useSearchColumnTable";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../../redux/actions/contactActions";
 
 const TableData = (props) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const { getColumnSearchProps } = useSearchColumnTable();
 
@@ -28,6 +31,12 @@ const TableData = (props) => {
         setData(itemData);
       });
   }, [props.data]);
+
+  const handleOnClickDelete = (id) => {
+    dispatch(deleteContact(id));
+    const newData = data.filter((item) => item.key !== id);
+    setData(newData);
+  };
 
   const columns = [
     {
@@ -75,6 +84,18 @@ const TableData = (props) => {
       key: "created",
       dataIndex: "created",
       title: "Created",
+    },
+    {
+      title: "operation",
+      dataIndex: "operation",
+      render: (_, record) =>
+        data.length >= 1 ? (
+          <div>
+            <Popconfirm title="Sure to delete?" onConfirm={() => handleOnClickDelete(record.key)}>
+              <a>Delete</a>
+            </Popconfirm>
+          </div>
+        ) : null,
     },
   ];
 

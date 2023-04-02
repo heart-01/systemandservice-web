@@ -2,6 +2,7 @@ import {
   LOAD_CONTACT_All_SUCCESS,
   LOAD_CONTACT_BY_ID_SUCCESS,
   CREATE_CONTACT_SUCCESS,
+  DELETE_CONTACT_BY_ID_SUCCESS,
   CONTACT_FAILED,
 } from "../actions/contactActions";
 
@@ -19,6 +20,11 @@ const contactReducer = (state = {}, action = {}) => {
         info: action.data,
       };
     case CREATE_CONTACT_SUCCESS:
+      return {
+        ...state,
+        status: action.data,
+      };
+    case DELETE_CONTACT_BY_ID_SUCCESS:
       return {
         ...state,
         status: action.data,

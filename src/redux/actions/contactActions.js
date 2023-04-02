@@ -5,6 +5,7 @@ import showMsg from "../../utils/AlertMessage";
 export const LOAD_CONTACT_All_SUCCESS = "LOAD_CONTACT_All_SUCCESS";
 export const LOAD_CONTACT_BY_ID_SUCCESS = "LOAD_CONTACT_BY_ID_SUCCESS";
 export const CREATE_CONTACT_SUCCESS = "CREATE_CONTACT_SUCCESS";
+export const DELETE_CONTACT_BY_ID_SUCCESS = "DELETE_CONTACT_BY_ID_SUCCESS";
 export const CONTACT_FAILED = "CONTACT_FAILED";
 
 // Action Creators
@@ -25,6 +26,13 @@ export const loadContactByIdSuccess = (data) => {
 export const createContactSuccess = (data) => {
   return {
     type: CREATE_CONTACT_SUCCESS,
+    data,
+  };
+};
+
+export const deleteContactByIdSuccess = (data) => {
+  return {
+    type: DELETE_CONTACT_BY_ID_SUCCESS,
     data,
   };
 };
@@ -70,6 +78,19 @@ export const createContact = (data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(createContactSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(callApiContactFailed(error));
+      });
+  };
+};
+
+export const deleteContact = (id) => {
+  return (dispatch) => {
+    api
+      .deleteContact(id)
+      .then((response) => {
+        dispatch(deleteContactByIdSuccess(response.data));
       })
       .catch((error) => {
         dispatch(callApiContactFailed(error));

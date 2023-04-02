@@ -1,4 +1,4 @@
-import { Alert, Card, Col, Image, Row } from "antd";
+import { Alert, Col, Image, Row } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import TitleDocument from "../../../utils/TitleDocument";
 import { loadAlbumImagesAll, loadPicworkById } from "../../../redux/actions/picworkActions.js";
@@ -29,10 +29,11 @@ const PicworkInfo = (props) => {
           <Alert message="ภาพผลงานบริษัท" description={dataPicwork?.name} type="info" closable afterClose={() => navigate("/picwork")} />
 
           <Row>
-            {dataAlbumImagesAll &&
-              dataAlbumImagesAll?.map((item) => (
-                <Col key={item.id} className="mt-10" xs={{ span: 7, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                  <Gallery
+            <Image.PreviewGroup>
+              {dataAlbumImagesAll &&
+                dataAlbumImagesAll?.map((item) => (
+                  <Col key={item.id} className="mt-10" xs={{ span: 7, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+                    {/* <Gallery
                     images={[
                       {
                         src: `${process.env.REACT_APP_URL_SERVER}/images/${item.image_album}`,
@@ -41,9 +42,12 @@ const PicworkInfo = (props) => {
                         thumbnailHeight: 600,
                       },
                     ]}
-                  />
-                </Col>
-              ))}
+                  /> */}
+
+                    <Image width={200} src={`${process.env.REACT_APP_URL_SERVER}/images/${item.image_album}`} />
+                  </Col>
+                ))}
+            </Image.PreviewGroup>
           </Row>
         </div>
       </section>

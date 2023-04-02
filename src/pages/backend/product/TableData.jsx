@@ -103,7 +103,7 @@ const TableData = (props) => {
         data.length >= 1 ? (
           <>
             <div>
-              <Typography.Link onClick={() => handleOnClickEdit(record.key)}>View</Typography.Link>
+              <Typography.Link onClick={() => handleOnClickEdit(record.key)}>Edit</Typography.Link>
             </div>
             <div>
               <Popconfirm title="Sure to delete?" onConfirm={() => handleOnClickDelete(record.key)}>

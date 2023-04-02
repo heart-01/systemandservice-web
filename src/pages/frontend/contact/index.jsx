@@ -87,11 +87,25 @@ const Index = (props) => {
                     <Input />
                   </Form.Item>
 
-                  <Form.Item label="Email" name="email" rules={[{ required: true, message: "กรอกออีเมล์" }]}>
+                  <Form.Item
+                    label="Email"
+                    name="email"
+                    rules={[
+                      { type: "email", message: "รูปแบบอีเมล์ไม่ถูกต้อง เช่น user@email.com" },
+                      { required: true, message: "กรอกออีเมล์" },
+                    ]}
+                  >
                     <Input />
                   </Form.Item>
 
-                  <Form.Item label="เบอร์โทร" name="tel" rules={[{ required: true, message: "กรอกเบอร์โทรศัพท์" }]}>
+                  <Form.Item
+                    label="เบอร์โทร"
+                    name="tel"
+                    rules={[
+                      { pattern: /^(\+)?([0-9]){10,10}$/, message: "รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง" },
+                      { required: true, message: "กรอกเบอร์โทรศัพท์" },
+                    ]}
+                  >
                     <Input />
                   </Form.Item>
 

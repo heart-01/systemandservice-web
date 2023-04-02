@@ -15,10 +15,16 @@ const createNewContact = async (data) => {
   return await http.post(`contact`, data);
 };
 
+//Method Delete Contact
+const deleteContact = async (id) => {
+  return await http.delete(`contact/${id}`);
+};
+
 const api = {
   getAllContact,
   getContactById,
   createNewContact,
+  deleteContact
 };
 
 export default api;
