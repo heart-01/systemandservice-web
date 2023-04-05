@@ -25,11 +25,11 @@ const Navbar = () => {
           label: <NavLink to={`/backend/account/register/${profileInfo.accountId}`}>ข้อมูลส่วนตัว</NavLink>,
           icon: <UserOutlined />,
         },
-        // {
-        //   key: "2",
-        //   label: "เปลี่ยนรหัสผ่าน",
-        //   icon: <KeyOutlined />,
-        // },
+        {
+          key: "2",
+          label: "เปลี่ยนรหัสผ่าน",
+          icon: <KeyOutlined />,
+        },
         {
           key: "3",
           label: <div onClick={handleOnClickLogout}>ออกจากระบบ</div>,
