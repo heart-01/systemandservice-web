@@ -5,30 +5,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAccountAll } from "../../../redux/actions/accountActions.js";
 import { useEffect } from "react";
 import TableData from "./TableData";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-const { Option } = Select;
+// const { Option } = Select;
 
 const Index = (props) => {
   const [role, setRole] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const queryName = queryParams.get("name");
+  const queryRole = queryParams.get("role");
   const profileInfo = useSelector((state) => state.account.info);
   const accountAll = useSelector((state) => state.account.all?.data);
 
   useEffect(() => {
-    const profileRole = profileInfo?.role !== "employee" ? "" : {role: 'customer'};
-    dispatch(loadAccountAll({ role }, profileRole));
-  }, [role]);
+    const profileRole = profileInfo?.role !== "employee" ? "" : { role: "customer" };
+    dispatch(loadAccountAll({ role: queryRole }, profileRole));
+  }, [role, queryRole]);
 
   const handleOnClickAddAccount = () => {
-    navigate("/backend/account/register");
+    navigate(`/backend/account/register?role=${queryRole}`);
   };
 
-  const handleOnChangeSelectAccount = (value) => {
-    setRole(value);
-  };
+  // const handleOnChangeSelectAccount = (value) => {
+  //   setRole(value);
+  // };
 
   return (
     <>
@@ -40,10 +45,10 @@ const Index = (props) => {
           title={[
             <AccountCircleOutlinedIcon key="1" />,
             <span key="2" className="ml-3">
-              {profileInfo?.role === "employee" ? "ข้อมูลลูกค้า" : "ข้อมูลสมาชิก"}
+              {queryName}
             </span>,
           ]}
-          subTitle={profileInfo?.role === "employee" ? "ตารางแสดงข้อมูลลูกค้า" : "ตารางแสดงข้อมูลสมาชิก"}
+          subTitle={`ตารางแสดง${queryName}`}
           extra={
             <Button onClick={handleOnClickAddAccount} key="1" type="primary">
               เพิ่มข้อมูล
@@ -51,7 +56,7 @@ const Index = (props) => {
           }
         />
 
-        {profileInfo?.role !== "employee" && (
+        {/* {profileInfo?.role !== "employee" && (
           <Form.Item label="">
             <Select style={{ width: 160 }} placeholder="ประเภทของสมาชิก" onChange={(value) => handleOnChangeSelectAccount(value)}>
               <Option value="">ทั้งหมด</Option>
@@ -61,7 +66,7 @@ const Index = (props) => {
               <Option value="customer">ลูกค้า</Option>
             </Select>
           </Form.Item>
-        )}
+        )} */}
       </div>
 
       <TableData data={accountAll} />

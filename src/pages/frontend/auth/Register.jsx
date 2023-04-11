@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAccount, patchAccount, loadAccountById, clearStateAccount } from "../../../redux/actions/accountActions.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import TitleDocument from "../../../utils/TitleDocument";
 import { Button, Card, Row, Form, Input, Radio, InputNumber, DatePicker, Upload, message, PageHeader, Image, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
@@ -13,7 +13,11 @@ const { Option } = Select;
 const Register = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
   const { accountId } = useParams();
+  const queryParams = new URLSearchParams(location.search);
+
+  const queryRole = queryParams.get("role");
   const registerStatus = useSelector((state) => state.account.status);
   const accountEdit = useSelector((state) => state.account.edit?.data);
   const profileInfo = useSelector((state) => state.account.info);
@@ -22,6 +26,10 @@ const Register = (props) => {
   const role = Form.useWatch(`role`, formRegister);
 
   useEffect(() => {
+    formRegister.setFieldsValue({
+      role: queryRole,
+    });
+
     if (accountId) {
       dispatch(loadAccountById(accountId));
     }
@@ -104,7 +112,7 @@ const Register = (props) => {
           title={[
             <AccountCircleOutlinedIcon key="1" />,
             <span key="2" className="ml-3">
-              ข้อมูลสมาชิก
+              ข้อมูลผู้ใช้งาน
             </span>,
           ]}
         />
@@ -113,7 +121,7 @@ const Register = (props) => {
       <section className="text-gray-600">
         <div className="container px-5 mx-auto">
           <div className="mx-0 lg:mx-52">
-            <Card title="ข้อมูลสมาชิก" bordered={true}>
+            <Card title="ข้อมูลผู้ใช้งาน" bordered={true}>
               <Form form={formRegister} size="large" name="formRegister" labelCol={{ span: 3 }} onFinish={onFinish} autoComplete="off">
                 {accountEdit && !fileImage && (
                   <>
@@ -216,6 +224,7 @@ const Register = (props) => {
                       </Select>
                     ) : (
                       <Select
+                        disabled
                         showSearch
                         placeholder="กรุณาเลือกประเภทของบัญชี"
                         optionFilterProp="children"
