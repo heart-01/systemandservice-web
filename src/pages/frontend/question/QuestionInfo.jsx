@@ -14,6 +14,7 @@ const QuestionInfo = (props) => {
   const navigate = useNavigate();
   const { questionId } = useParams();
 
+  const token = localStorage.getItem("token");
   const questionInfo = useSelector((state) => state.question.info);
   const commentByQuestionId = useSelector((state) => state.question.commentByQuestionId);
 
@@ -55,9 +56,11 @@ const QuestionInfo = (props) => {
                 </div>
               ))}
 
-              <div className="px-0 lg:px-96 mt-5">
-                <CommentForm count_comment={questionInfo?.data.count_comment} questionId={questionInfo?.data.id} />
-              </div>
+              {token && (
+                <div className="px-0 lg:px-96 mt-5">
+                  <CommentForm count_comment={questionInfo?.data.count_comment} questionId={questionInfo?.data.id} />
+                </div>
+              )}
             </div>
           </section>
         </>

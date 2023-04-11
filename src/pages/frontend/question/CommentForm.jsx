@@ -1,12 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createComment, patchQuestion } from "../../../redux/actions/questionActions.js";
 import { Button, Card, Form, Input } from "antd";
 import { RichTextEditor } from "@mantine/rte";
+import { useEffect } from "react";
 
 const CommentForm = (props) => {
   const dispatch = useDispatch();
 
   const [form] = Form.useForm();
+  const profileInfo = useSelector((state) => state.account.info);
+
+  useEffect(() => {
+    form.setFieldsValue({
+      alias: profileInfo?.fullname,
+    });
+  }, [profileInfo]);
 
   const onFinish = (valuesFormObject) => {
     const questionId = props.questionId;
@@ -31,7 +39,7 @@ const CommentForm = (props) => {
             },
           ]}
         >
-          <Input />
+          <Input disabled />
         </Form.Item>
 
         <Form.Item

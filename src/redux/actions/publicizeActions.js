@@ -59,7 +59,8 @@ export const loadPublicizeAll = () => {
     api
       .getAllPublicize()
       .then((response) => {
-        dispatch(loadPublicizeAllSuccess(response.data));
+        const data = response.data.data.sort((a, b) => b.id - a.id);
+        dispatch(loadPublicizeAllSuccess({ data }));
       })
       .catch((error) => {
         dispatch(callApiPublicizeFailed(error));

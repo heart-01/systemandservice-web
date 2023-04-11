@@ -80,7 +80,8 @@ export const loadPicworkAll = () => {
     api
       .getAllPicwork()
       .then((response) => {
-        dispatch(loadPicworkAllSuccess(response.data));
+        const data = response.data.data.sort((a, b) => b.id - a.id);
+        dispatch(loadPicworkAllSuccess({ data }));
       })
       .catch((error) => {
         dispatch(callApiPicworkFailed(error));

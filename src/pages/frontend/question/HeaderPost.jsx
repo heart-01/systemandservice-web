@@ -4,6 +4,8 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import { NavLink } from "react-router-dom";
 
 const HeaderPost = (props) => {
+  const token = localStorage.getItem("token");
+
   const menuOrder = (
     <Menu>
       <Menu.Item onClick={() => props.handleOnClickMenuOrder(null)}>
@@ -48,11 +50,13 @@ const HeaderPost = (props) => {
 
       <div className="flex justify-between mt-5">
         <div>
-          <NavLink to="/question/create">
-            <Button type="dashed" icon={<PostAddIcon fontSize={"medium"} />} size="large">
-              &nbsp;เพิ่มกระทู้
-            </Button>
-          </NavLink>
+          {token && (
+            <NavLink to="/question/create">
+              <Button type="dashed" icon={<PostAddIcon fontSize={"medium"} />} size="large">
+                &nbsp;เพิ่มกระทู้
+              </Button>
+            </NavLink>
+          )}
         </div>
         <div>
           <Dropdown overlay={menuOrder}>

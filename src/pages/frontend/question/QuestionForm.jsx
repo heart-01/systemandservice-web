@@ -1,10 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createQuestion } from "../../../redux/actions/questionActions.js";
 import { Button, Form, Input, Typography } from "antd";
 import { RichTextEditor } from "@mantine/rte";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import TitleDocument from "../../../utils/TitleDocument";
+import { useEffect } from "react";
 
 const { Title } = Typography;
 
@@ -12,9 +13,19 @@ const QuestionForm = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [formQuestion] = Form.useForm();
+  const profileInfo = useSelector((state) => state.account.info);
+
+  useEffect(() => {
+    formQuestion.setFieldsValue({
+      alias: profileInfo?.fullname,
+      email: profileInfo?.email,
+    });
+  }, [profileInfo]);
+
   const onFinish = (valuesFormObject) => {
     dispatch(createQuestion(valuesFormObject));
-    navigate("/question")
+    navigate("/question");
   };
 
   const onFinishFailed = (errorInfo) => console.log("Failed:", errorInfo);
@@ -28,7 +39,7 @@ const QuestionForm = (props) => {
           <div className="mb-10">
             <NavLink to="/question">
               <Button size={"large"} type="primary" shape="round">
-                <ArrowBackIosIcon fontSize={'inherit'} /> Back
+                <ArrowBackIosIcon fontSize={"inherit"} /> Back
               </Button>
             </NavLink>
           </div>
@@ -40,6 +51,7 @@ const QuestionForm = (props) => {
           </div>
 
           <Form
+            form={formQuestion}
             size="large"
             name="formQuestion"
             labelCol={{
@@ -59,7 +71,7 @@ const QuestionForm = (props) => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
 
             <Form.Item
@@ -72,7 +84,7 @@ const QuestionForm = (props) => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled />
             </Form.Item>
 
             <Form.Item

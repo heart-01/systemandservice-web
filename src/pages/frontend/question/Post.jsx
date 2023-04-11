@@ -51,7 +51,7 @@ const Post = (props) => {
         />
         <div>
           <NavLink onClick={() => handleOnClickViewPost(props.data.id, +props.data.views + 1)} to={`${props.data.id}`}>
-            <Button type="dashed">ความคิดเห็น</Button>
+            <Button type="dashed">แสดงความคิดเห็น</Button>
           </NavLink>
 
           {profileInfo?.role === "admin" && (

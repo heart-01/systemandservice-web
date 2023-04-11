@@ -177,18 +177,18 @@ const Navbar = () => {
                 >
                   ข่าวประชาสัมพันธ์
                 </NavLink>
-                {token && (
-                  <NavLink
-                    to="/question"
-                    className={(navData) =>
-                      navData.isActive
-                        ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                        : "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    }
-                  >
-                    กระทู้ถาม-ตอบ
-                  </NavLink>
-                )}
+
+                <NavLink
+                  to="/question"
+                  className={(navData) =>
+                    navData.isActive
+                      ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      : "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  }
+                >
+                  กระทู้ถาม-ตอบ
+                </NavLink>
+
                 <NavLink
                   to="/picwork"
                   className={(navData) =>
@@ -358,18 +358,16 @@ const Navbar = () => {
               >
                 ข่าวประชาสัมพันธ์
               </NavLink>
-              {token && (
-                <NavLink
-                  to="/question"
-                  className={(navData) =>
-                    navData.isActive
-                      ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                      : "text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  }
-                >
-                  กระทู้ถาม-ตอบ
-                </NavLink>
-              )}
+              <NavLink
+                to="/question"
+                className={(navData) =>
+                  navData.isActive
+                    ? "bg-green-500 text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    : "text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                }
+              >
+                กระทู้ถาม-ตอบ
+              </NavLink>
               <NavLink
                 to="/picwork"
                 className={(navData) =>

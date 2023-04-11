@@ -132,6 +132,16 @@ const Register = (props) => {
                   </>
                 )}
 
+                <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{ required: true, message: "กรอกชื่อผู้ใช้งาน" }]}>
+                  {accountEdit ? <Input disabled /> : <Input />}
+                </Form.Item>
+
+                {!accountEdit && (
+                  <Form.Item label="รหัสผ่าน" name="password" rules={[{ required: true, message: "กรอกรหัสผ่าน" }]}>
+                    <Input.Password />
+                  </Form.Item>
+                )}
+
                 <Row>
                   <Form.Item labelCol={{ span: 9 }} label="ชื่อ" name="fname" rules={[{ required: true, message: "กรอกชื่อ" }]}>
                     <Input />
@@ -166,16 +176,6 @@ const Register = (props) => {
                 >
                   <Input />
                 </Form.Item>
-
-                <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{ required: true, message: "กรอกชื่อผู้ใช้งาน" }]}>
-                  {accountEdit ? <Input disabled /> : <Input />}
-                </Form.Item>
-
-                {!accountEdit && (
-                  <Form.Item label="รหัสผ่าน" name="password" rules={[{ required: true, message: "กรอกรหัสผ่าน" }]}>
-                    <Input.Password />
-                  </Form.Item>
-                )}
 
                 <Form.Item label="เพศ" name="gender" rules={[{ required: true, message: "เลือกเพศ" }]}>
                   <Radio.Group name="radiogroup" defaultValue={1}>

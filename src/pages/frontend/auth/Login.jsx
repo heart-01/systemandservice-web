@@ -31,17 +31,17 @@ const Login = (props) => {
           <div className="mx-0 lg:mx-96 my-20">
             <Card title="เข้าสู่ระบบ" bordered={true}>
               <Form size="large" name="formLogin" labelCol={{ span: 3 }} onFinish={onFinish} autoComplete="off">
-                <Form.Item label="Username" name="username" rules={[{ required: true, message: "Please input your username!" }]}>
+                <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{ required: true, message: "กรอกชื่อผู้ใช้งาน" }]}>
                   <Input />
                 </Form.Item>
 
-                <Form.Item label="Password" name="password" rules={[{ required: true, message: "Please input your password!" }]}>
+                <Form.Item label="รหัสผ่าน" name="password" rules={[{ required: true, message: "กรอกรหัสผ่าน" }]}>
                   <Input.Password />
                 </Form.Item>
 
                 <div className="flex justify-center align-center justify-items-center">
                   <Form.Item name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
+                    <Checkbox>จดจำฉัน</Checkbox>
                   </Form.Item>
                 </div>
 
