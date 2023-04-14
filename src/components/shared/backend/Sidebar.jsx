@@ -10,10 +10,10 @@ import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import { Menu, Layout } from "antd";
 import { useSelector } from "react-redux";
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import Person4OutlinedIcon from '@mui/icons-material/Person4Outlined';
-import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
+import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const { Sider } = Layout;
 
@@ -38,41 +38,32 @@ const Sidebar = () => {
       ),
 
       getItem(
-        "ข้อมูลผู้ใช้งาน",
-        "2",
-        <NavLink className="flex items-center">
-          <AccountCircleOutlinedIcon />
-        </NavLink>,
-        [
-          getItem(
-            "ข้อมูลสมาชิก",
-            "2.1",
-            <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลสมาชิก&role=user">
-              <PermIdentityOutlinedIcon />
-            </NavLink>
-          ),
-          getItem(
-            "ข้อมูลแอดมิน",
-            "2.2",
-            <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลแอดมิน&role=admin">
-              <Person4OutlinedIcon />
-            </NavLink>
-          ),
-          getItem(
-            "ข้อมูลพนักงาน",
-            "2.3",
-            <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลพนักงาน&role=employee">
-              <Person2OutlinedIcon />
-            </NavLink>
-          ),
-          getItem(
-            "ข้อมูลลูกค้า",
-            "2.4",
-            <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลลูกค้า&role=customer">
-              <PersonOutlinedIcon />
-            </NavLink>
-          ),
-        ]
+        "ข้อมูลสมาชิก",
+        "2.1",
+        <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลสมาชิก&role=user">
+          <PermIdentityOutlinedIcon />
+        </NavLink>
+      ),
+      getItem(
+        "ข้อมูลแอดมิน",
+        "2.2",
+        <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลแอดมิน&role=admin">
+          <Person4OutlinedIcon />
+        </NavLink>
+      ),
+      getItem(
+        "ข้อมูลพนักงาน",
+        "2.3",
+        <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลพนักงาน&role=employee">
+          <Person2OutlinedIcon />
+        </NavLink>
+      ),
+      getItem(
+        "ข้อมูลลูกค้า",
+        "2.4",
+        <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลลูกค้า&role=customer">
+          <PersonOutlinedIcon />
+        </NavLink>
       ),
       // getItem("ข้อมูลลูกค้า", "3", <NavLink className="flex items-center" to="/backend/customer"><BadgeOutlinedIcon /></NavLink>),
       getItem(
