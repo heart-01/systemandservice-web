@@ -164,7 +164,7 @@ export const createAlbumImages = (id, data) => {
       .createAlbumImages(id, data)
       .then((response) => {
         response.data.success === true && showMsg.success();
-        dispatch(createAlbumImagesSuccess(response.data.success));
+        dispatch(createAlbumImagesSuccess(response.data));
       })
       .catch((error) => {
         dispatch(callApiPicworkFailed(error));

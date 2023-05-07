@@ -58,7 +58,9 @@ const picworkReducer = (state = {}, action = {}) => {
     case CREATE_ALBUMIMAGES_SUCCESS:
       return {
         ...state,
-        status: action.data,
+        create: {
+          status: action.data,
+        },
       };
     case PATCH_ALBUMIMAGES_SUCCESS:
       return {

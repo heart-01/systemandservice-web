@@ -29,6 +29,7 @@ const ViewData = (props) => {
 
   const dataAlbumImagesAll = useSelector((state) => state.picwork.albumImagesAll?.data);
   const patchStatusData = useSelector((state) => state.picwork?.patch?.status?.data);
+  const createStatusData = useSelector((state) => state.picwork?.create?.status?.data);
 
   useEffect(() => {
     if (paramsId) {
@@ -38,7 +39,7 @@ const ViewData = (props) => {
     return () => {
       dispatch(clearStatePicwork());
     };
-  }, [paramsId, patchStatusData]);
+  }, [paramsId, patchStatusData, createStatusData]);
 
   const handleOnClickBack = () => {
     navigate(-1);
