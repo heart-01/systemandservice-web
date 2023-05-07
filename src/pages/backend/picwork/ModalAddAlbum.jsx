@@ -76,7 +76,6 @@ const ModalAddAlbum = (props) => {
 
     form.resetFields();
     props.setIsModalOpen(false);
-    window.location.reload();
   };
 
   const handleOnUploadShowImagePreview = (e) => {

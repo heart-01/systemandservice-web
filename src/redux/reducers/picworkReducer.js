@@ -46,6 +46,9 @@ const picworkReducer = (state = {}, action = {}) => {
         status: "",
         error: "",
         edit: "",
+        patch: {
+          status: "",
+        },
       };
     case LOAD_ALBUMIMAGES_All_SUCCESS:
       return {
@@ -60,7 +63,9 @@ const picworkReducer = (state = {}, action = {}) => {
     case PATCH_ALBUMIMAGES_SUCCESS:
       return {
         ...state,
-        status: action.data,
+        patch: {
+          status: action.data,
+        },
       };
     case DELETE_ALBUMIMAGES_BY_ID_SUCCESS:
       return {
