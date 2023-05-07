@@ -36,6 +36,11 @@ const createAlbumImages = async (id, data) => {
 };
 
 //Method Delete AlbumImages
+const patchAlbumImages = async (id, data) => {
+  return await frontendHeader.patch(`picwork/albumImages/${id}`, data);
+};
+
+//Method Delete AlbumImages
 const deleteAlbumImages = async (id) => {
   return await frontendHeader.delete(`picwork/albumImages/${id}`);
 };
@@ -48,7 +53,8 @@ const api = {
   deletePicwork,
   getAllAlbumImages,
   createAlbumImages,
-  deleteAlbumImages
+  patchAlbumImages,
+  deleteAlbumImages,
 };
 
 export default api;

@@ -45,7 +45,7 @@ const Post = (props) => {
       </div>
       <List.Item>
         <List.Item.Meta
-          avatar={<Avatar size={64} src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />}
+          avatar={<Avatar size={64} src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=" />}
           title={<p className="text-sm px-0 lg:text-lg lg:px-10">{props.data.title}</p>}
           description={<div dangerouslySetInnerHTML={{ __html: props.data.description }} className="mt-3 text-gray-700 whitespace-pre-wrap text-sm px-0 lg:text-lg lg:px-10"></div>}
         />

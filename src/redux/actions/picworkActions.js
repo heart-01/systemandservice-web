@@ -10,6 +10,7 @@ export const DELETE_PICWORK_BY_ID_SUCCESS = "DELETE_PICWORK_BY_ID_SUCCESS";
 export const CLEAR_STATE_PICWORK = "CLEAR_STATE_PICWORK";
 export const LOAD_ALBUMIMAGES_All_SUCCESS = "LOAD_ALBUMIMAGES_All_SUCCESS";
 export const CREATE_ALBUMIMAGES_SUCCESS = "CREATE_ALBUMIMAGES_SUCCESS";
+export const PATCH_ALBUMIMAGES_SUCCESS = "PATCH_ALBUMIMAGES_SUCCESS";
 export const DELETE_ALBUMIMAGES_BY_ID_SUCCESS = "DELETE_ALBUMIMAGES_BY_ID_SUCCESS";
 export const PICWORK_FAILED = "PICWORK_FAILED";
 
@@ -58,6 +59,12 @@ export const loadAlbumImagesAllSuccess = (data) => {
 export const createAlbumImagesSuccess = (data) => {
   return {
     type: CREATE_ALBUMIMAGES_SUCCESS,
+    data,
+  };
+};
+export const patchAlbumImagesByIdSuccess = (data) => {
+  return {
+    type: PATCH_ALBUMIMAGES_SUCCESS,
     data,
   };
 };
@@ -158,6 +165,18 @@ export const createAlbumImages = (id, data) => {
       .then((response) => {
         response.data.success === true && showMsg.success();
         dispatch(createAlbumImagesSuccess(response.data.success));
+      })
+      .catch((error) => {
+        dispatch(callApiPicworkFailed(error));
+      });
+  };
+};
+export const patchAlbumImages = (id, data) => {
+  return (dispatch) => {
+    api
+      .patchAlbumImages(id, data)
+      .then((response) => {
+        dispatch(patchAlbumImagesByIdSuccess(response.data));
       })
       .catch((error) => {
         dispatch(callApiPicworkFailed(error));

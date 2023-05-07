@@ -28,7 +28,7 @@ const Index = (props) => {
   }, [role, queryRole]);
 
   const handleOnClickAddAccount = () => {
-    navigate(`/backend/account/register?role=${queryRole}`);
+    navigate(`/backend/account/register?role=${queryRole}&name=${queryName}`);
   };
 
   // const handleOnChangeSelectAccount = (value) => {
@@ -69,7 +69,7 @@ const Index = (props) => {
         )} */}
       </div>
 
-      <TableData data={accountAll} />
+      <TableData text={queryName} data={accountAll} />
     </>
   );
 };

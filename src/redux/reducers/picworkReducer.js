@@ -1,14 +1,15 @@
-import { 
+import {
   LOAD_PICWORK_All_SUCCESS,
   LOAD_PICWORK_BY_ID_SUCCESS,
-  CREATE_PICWORK_SUCCESS, 
+  CREATE_PICWORK_SUCCESS,
   PATCH_PICWORK_SUCCESS,
   DELETE_PICWORK_BY_ID_SUCCESS,
   CLEAR_STATE_PICWORK,
   LOAD_ALBUMIMAGES_All_SUCCESS,
   CREATE_ALBUMIMAGES_SUCCESS,
+  PATCH_ALBUMIMAGES_SUCCESS,
   DELETE_ALBUMIMAGES_BY_ID_SUCCESS,
-  PICWORK_FAILED
+  PICWORK_FAILED,
 } from "../actions/picworkActions";
 
 // Reduces
@@ -42,9 +43,9 @@ const picworkReducer = (state = {}, action = {}) => {
     case CLEAR_STATE_PICWORK:
       return {
         ...state,
-        status: '',
-        error: '',
-        edit: ''
+        status: "",
+        error: "",
+        edit: "",
       };
     case LOAD_ALBUMIMAGES_All_SUCCESS:
       return {
@@ -52,6 +53,11 @@ const picworkReducer = (state = {}, action = {}) => {
         albumImagesAll: action.data,
       };
     case CREATE_ALBUMIMAGES_SUCCESS:
+      return {
+        ...state,
+        status: action.data,
+      };
+    case PATCH_ALBUMIMAGES_SUCCESS:
       return {
         ...state,
         status: action.data,

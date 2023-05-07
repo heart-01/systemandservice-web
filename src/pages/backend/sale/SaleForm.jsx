@@ -20,6 +20,8 @@ const SaleForm = (props) => {
   const [form] = Form.useForm();
   const { paramsId } = useParams();
 
+  const accountInfo = useSelector((state) => state.account.info);
+
   const accountAll = useSelector((state) => state.account.all);
   const productAll = useSelector((state) => state.product.all);
 
@@ -97,6 +99,18 @@ const SaleForm = (props) => {
         purchase_date: dayjs(dataEdit.purchase_date),
         payment_date: dayjs(dataEdit.payment_date),
         warranty: dataEdit.warranty,
+      });
+
+      console.log(dataEdit.account_id);
+    } else {
+      accountInfo.role !== "admin" &&
+        form.setFieldsValue({
+          account_id: accountInfo.accountId,
+        });
+
+      form.setFieldsValue({
+        purchase_date: dayjs(),
+        payment_date: dayjs(),
       });
     }
   }, [dataEdit]);

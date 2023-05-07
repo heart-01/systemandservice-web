@@ -7,6 +7,7 @@ import { Button, Card, Row, Form, Input, Radio, InputNumber, DatePicker, Upload,
 import { UploadOutlined } from "@ant-design/icons";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import dayjs from "../../../utils/configuredDayJs";
+import { isUndefined } from "lodash";
 
 const { Option } = Select;
 
@@ -18,6 +19,7 @@ const Register = (props) => {
   const queryParams = new URLSearchParams(location.search);
 
   const queryRole = queryParams.get("role");
+  const nameText = queryParams.get("name");
   const registerStatus = useSelector((state) => state.account.status);
   const accountEdit = useSelector((state) => state.account.edit?.data);
   const profileInfo = useSelector((state) => state.account.info);
@@ -49,7 +51,7 @@ const Register = (props) => {
     formRegister.setFieldsValue({
       fname: accountEdit.fname,
       lname: accountEdit.lname,
-      address: accountEdit.address,
+      address: accountEdit.address === "undefined" ? "-" : accountEdit.address,
       email: accountEdit.email,
       tel: accountEdit.tel,
       username: accountEdit.username,
@@ -112,7 +114,7 @@ const Register = (props) => {
           title={[
             <AccountCircleOutlinedIcon key="1" />,
             <span key="2" className="ml-3">
-              ข้อมูลผู้ใช้งาน
+              {`${nameText}`}
             </span>,
           ]}
         />
@@ -121,7 +123,7 @@ const Register = (props) => {
       <section className="text-gray-600">
         <div className="container px-5 mx-auto">
           <div className="mx-0 lg:mx-52">
-            <Card title="ข้อมูลผู้ใช้งาน" bordered={true}>
+            <Card title={`${nameText}`} bordered={true}>
               <Form form={formRegister} size="large" name="formRegister" labelCol={{ span: 3 }} onFinish={onFinish} autoComplete="off">
                 {accountEdit && !fileImage && (
                   <>
@@ -151,8 +153,19 @@ const Register = (props) => {
                   </Form.Item>
                 </Row>
 
-                <Form.Item label="ที่อยู่" name="address" rules={[{ required: true, message: "กรอกที่อยู่" }]}>
-                  <Input />
+                <Form.Item label="ที่อยู่" name="address">
+                  <Input.TextArea />
+                </Form.Item>
+
+                <Form.Item label="เพศ" name="gender">
+                  <Radio.Group name="radiogroup" defaultValue={1}>
+                    <Radio value={"ชาย"}>ชาย</Radio>
+                    <Radio value={"หญิง"}>หญิง</Radio>
+                  </Radio.Group>
+                </Form.Item>
+
+                <Form.Item label="วันเกิด" name="dob" rules={[{ required: true, message: "กรอกวันเกิด" }]}>
+                  <DatePicker />
                 </Form.Item>
 
                 <Form.Item
@@ -177,20 +190,9 @@ const Register = (props) => {
                   <Input />
                 </Form.Item>
 
-                <Form.Item label="เพศ" name="gender" rules={[{ required: true, message: "เลือกเพศ" }]}>
-                  <Radio.Group name="radiogroup" defaultValue={1}>
-                    <Radio value={"ชาย"}>ชาย</Radio>
-                    <Radio value={"หญิง"}>หญิง</Radio>
-                  </Radio.Group>
-                </Form.Item>
-
                 {/* <Form.Item label="อายุ" name="age" rules={[{ required: true, message: "กรอกอายุ" }]}>
                   <InputNumber parser={(value) => value.replace(/\./g, "")} min={1} />
                 </Form.Item> */}
-
-                <Form.Item label="วันเกิด" name="dob" rules={[{ required: true, message: "กรอกวันเกิด" }]}>
-                  <DatePicker />
-                </Form.Item>
 
                 {/* <Row>
                   <Form.Item labelCol={{ span: 13 }} label="น้ำหนัก" name="weight" rules={[{ required: true, message: "กรอกน้ำหนัก" }]}>

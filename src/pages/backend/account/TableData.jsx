@@ -38,7 +38,7 @@ const TableData = (props) => {
     const newData = [...data];
     const index = newData.findIndex((item) => key === item.key);
 
-    navigate(`/backend/account/register/${newData[index].key}`)
+    navigate(`/backend/account/register/${newData[index].key}?name=${props.text}`)
   };
 
   const handleOnClickDelete = (id) => {
@@ -83,17 +83,17 @@ const TableData = (props) => {
       sorter: (a, b) => a.username.length - b.username.length,
       sortDirections: ["descend", "ascend"],
     },
-    {
-      key: "gender",
-      dataIndex: "gender",
-      title: "เพศ",
-      ...getColumnSearchProps("gender")
-    },
-    {
-      key: "start_date",
-      dataIndex: "start_date",
-      title: "วันเริ่มทำงาน",
-    },
+    // {
+    //   key: "gender",
+    //   dataIndex: "gender",
+    //   title: "เพศ",
+    //   ...getColumnSearchProps("gender")
+    // },
+    // {
+    //   key: "start_date",
+    //   dataIndex: "start_date",
+    //   title: "วันเริ่มทำงาน",
+    // },
     {
       key: "created",
       dataIndex: "created",

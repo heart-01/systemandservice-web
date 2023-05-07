@@ -108,7 +108,7 @@ const Sidebar = () => {
       getItem(
         "ข้อมูลลูกค้า",
         "1",
-        <NavLink className="flex items-center" to="/backend/account">
+        <NavLink className="flex items-center" to="/backend/account?name=ข้อมูลลูกค้า&role=customer">
           <AccountCircleOutlinedIcon />
         </NavLink>
       ),
