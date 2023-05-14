@@ -80,17 +80,17 @@ const TableData = (props) => {
       render: (_, record) =>
         data.length >= 1 ? (
           <>
-            <div>
-              <Typography.Link onClick={() => handleOnClickView(record.key)}>View</Typography.Link>
-            </div>
             {/* <div>
+              <Typography.Link onClick={() => handleOnClickView(record.key)}>View</Typography.Link>
+            </div> */}
+            <div>
               <Typography.Link onClick={() => handleOnClickEdit(record.key)}>Edit</Typography.Link>
             </div>
             <div>
               <Popconfirm title="Sure to delete?" onConfirm={() => handleOnClickDelete(record.key)}>
                 <a className="text-red-500" >Delete</a>
               </Popconfirm>
-            </div> */}
+            </div>
           </>
         ) : null,
     },

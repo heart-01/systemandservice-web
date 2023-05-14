@@ -34,7 +34,7 @@ const PicworkForm = (props) => {
 
   if (dataEdit) {
     form.setFieldsValue({
-      name: dataEdit.name,
+      name: dataEdit.name
     });
   }
 
@@ -110,7 +110,7 @@ const PicworkForm = (props) => {
                   <Input />
                 </Form.Item>
 
-                <Form.Item name="image" label="ภาพปกอัลบั้ม" valuePropName="file" rules={[{ required: dataEdit ? false : true, message: "" }]} getValueFromEvent={handleOnUploadShowImagePreview}>
+                <Form.Item name="image" label="ภาพปกอัลบั้ม" valuePropName="file" rules={[{ required: true, message: "" }]} getValueFromEvent={handleOnUploadShowImagePreview}>
                   <Upload maxCount={1} listType="picture" {...configUpload}>
                     <Button icon={<UploadOutlined />}>Click to upload</Button>
                   </Upload>

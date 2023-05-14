@@ -88,15 +88,22 @@ const Sidebar = () => {
         </NavLink>
       ),
       getItem(
-        "ภาพผลงาน",
+        "อัลบั้มภาพผลงาน",
         "7",
+        <NavLink className="flex items-center" to="/backend/picalbum">
+          <InsertPhotoOutlinedIcon />
+        </NavLink>
+      ),
+      getItem(
+        "ภาพผลงาน",
+        "8",
         <NavLink className="flex items-center" to="/backend/picwork">
           <InsertPhotoOutlinedIcon />
         </NavLink>
       ),
       getItem(
         "ข่าวประชาสัมพันธ์",
-        "8",
+        "9",
         <NavLink className="flex items-center" to="/backend/publicize">
           <NewspaperOutlinedIcon />
         </NavLink>

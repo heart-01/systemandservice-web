@@ -27,9 +27,9 @@ const Index = (props) => {
       <div className="mb-10">
         <PageHeader
           className="site-page-header"
-          title={[<InsertPhotoOutlinedIcon key="1" />, <span key="2" className="ml-3" >ข้อมูลภาพผลงาน</span>]}
-          subTitle="ตารางแสดงข้อมูลภาพผลงาน"
-          // extra={ <Button onClick={handleOnClickAddRepair} key="1" type="primary"> เพิ่มข้อมูล </Button> }
+          title={[<InsertPhotoOutlinedIcon key="1" />, <span key="2" className="ml-3" >ข้อมูลอัลบั้มภาพผลงาน</span>]}
+          subTitle="ตารางแสดงข้อมูลอัลบั้มภาพผลงาน"
+          extra={ <Button onClick={handleOnClickAddRepair} key="1" type="primary"> เพิ่มอัลบั้ม </Button> }
         />
       </div>
 

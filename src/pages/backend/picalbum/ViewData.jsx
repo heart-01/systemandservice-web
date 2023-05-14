@@ -58,7 +58,7 @@ const ViewData = (props) => {
       <p className="text-4xl text-center">รายละเอียดข้อมูลอัลบั้มภาพผลงาน</p>
       <div class="flex justify-end mb-10">
         <Button type="primary" onClick={handleOnClickAddAlbum}>
-          เพิ่มภาพผลงาน
+          เพิ่มอัลบั้มภาพผลงาน
         </Button>
       </div>
       <section className="text-gray-600">

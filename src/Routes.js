@@ -48,6 +48,7 @@ import ManagePicworkIndex from "./pages/backend/picwork/index";
 import ManagePicworkCreate from "./pages/backend/picwork/PicworkForm";
 import ManagePicworkEdit from "./pages/backend/picwork/PicworkForm";
 import ManagePicworkView from "./pages/backend/picwork/ViewData";
+import ManagePicalbumIndex from "./pages/backend/picalbum/index";
 import ManagePublicizeIndex from "./pages/backend/publicize/index";
 import ManagePublicizeCreate from "./pages/backend/publicize/PublicizeForm";
 import ManagePublicizeEdit from "./pages/backend/publicize/PublicizeForm";
@@ -120,10 +121,13 @@ const RoutesPath = () => {
             <Route path="view/:paramsId" element={<ManageRepairView title="ข้อมูลแจ้งซ่อมสินค้า" />} />
           </Route>
           <Route path="picwork">
-            <Route index element={<ManagePicworkIndex title="ข้อมูลอัลบั้มภาพผลงาน" />} />
+            <Route index element={<ManagePicworkIndex title="ข้อมูลภาพผลงาน" />} />
             <Route path="add" element={<ManagePicworkCreate title="ข้อมูลอัลบั้มภาพผลงาน" />} />
             <Route path="edit/:paramsId" element={<ManagePicworkEdit title="ข้อมูลอัลบั้มภาพผลงาน" />} />
             <Route path="view/:paramsId" element={<ManagePicworkView title="ข้อมูลอัลบั้มภาพผลงาน" />} />
+          </Route>
+          <Route path="picalbum">
+            <Route index element={<ManagePicalbumIndex title="ข้อมูลอัลบั้มภาพผลงาน" />} />
           </Route>
           <Route path="publicize">
             <Route index element={<ManagePublicizeIndex title="ข้อมูลข่าวประชาสัมพันธ์" />} />
